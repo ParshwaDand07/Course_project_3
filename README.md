@@ -286,6 +286,14 @@ src.compile(optimizer='adam', loss='mean_squared_error')
 src.fit(X_train, y_train, epochs=150, batch_size=32,validation_data=(X_val, y_val))
 ```
 
+### API
+In the API, we will take the inputs as:
+`Batting Team: `
+`Bowling Team: `
+`Venue: `
+
+and then send the output as the runs predicted.
+
 ## ODI Match Winner
 
 For predicting the match winner, we use the Keras DNN model for the classification purpose. The steps in include general preprocessing, data transformation with the use of `ColumnTransformer` and final training. We also have made use of Pickle for making the main component of API.
@@ -368,6 +376,17 @@ temp_df,target = match_progression(final_cricket,9,pipe)
 temp_df
 ```
 
+#### API
+In the api we will take the following inputs:
+`Batting Team: `
+`Bowling Team: `
+`Venue: `
+`Target: `
+`Runs Left: `
+`Wickets Left: `
+
+and then send the output, the predicted Winner.
+
 ### Team Composition Prediction
 For predicting Team Composition for a match, we used the Dataset from [Howstat.com]('http://howstat.com/cricket/Statistics/WorldCup/SeriesAnalysis.asp?SeriesCode=1117'). We got field like
 - Batting Strike Rate
@@ -425,6 +444,14 @@ for country in player_stats['Country'].unique():
     print(f"\nTop 11 players with the highest probability for {country}:\n{top_players}")
 ```
 
+#### API
+In the api we will take the following inputs:
+`Batting Team: `
+`Bowling Team: `
+`Venue: `
+
+and then send the output, the predicted Team Compositions.
+
 ### Sixes in the Tournament
 
 Here, we have use the `deliveries.csv` file from the ICC WC 2023 Kaggle Dataset. We have also used another dataset from Kaggle for getting the number of sixes from the recent few matches. 
@@ -445,3 +472,9 @@ model.add(LSTM(units=25))
 model.add(Dense(units=1))
 model.compile(optimizer='adam', loss='mean_squared_error')
 ```
+
+We have used RMS error as the Evaluation Metric here. We have plotted some graphs for the same in the notebooks.
+
+
+#### API
+Here, we don't take any input in the API, We just return the prediction of number of sixes in the tournament.
